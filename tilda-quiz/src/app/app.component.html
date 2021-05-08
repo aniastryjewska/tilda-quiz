@@ -1,3 +1,10 @@
-<ul>
-  <li *ngFor="let quiz of quizzes$ | async">{{quiz.name}}</li>
-</ul>
+<h1>Tilda Quizz</h1>
+
+<section class="listOfQuizzes">
+  <mat-card class="quizCard" *ngFor="let quiz of quizzes$ | async">
+    <mat-card-title>{{quiz.name}}</mat-card-title>
+    <div class="quizCardBody"><p>Not started</p>
+    <button mat-stroked-button>Start</button>
+    </div>
+  </mat-card>
+</section>
