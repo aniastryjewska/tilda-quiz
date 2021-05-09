@@ -40,9 +40,7 @@ query Quizzes {
 export class DashboardComponent implements OnInit {
 
 
-  //@Input() quizzes$?;
-
-  currentQuestion = 1
+  currentQuestion = 0
   
   quizzes$: Observable<Quiz[]>;
 
@@ -57,7 +55,21 @@ query: GET_QUIZZES
   selectedQuiz?: Quiz;
   onSelect(quiz: Quiz): void {
     this.selectedQuiz = quiz;
-    
+  }
+
+  nextQuestion() {
+    this.currentQuestion = this.currentQuestion+1
+  }
+  previousQuestion() {
+    if(this.currentQuestion-1>=0) {
+    this.currentQuestion = this.currentQuestion-1
+  } else {
+    this.currentQuestion = this.currentQuestion
+  }
+  }
+
+  returnToDashboard() {
+    !this.selectedQuiz
   }
 }
 

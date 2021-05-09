@@ -1,15 +1,16 @@
 <div *ngIf="!selectedQuiz">
-<section class="listOfQuizzes">
-    <mat-card class="quizCard" *ngFor="let quiz of quizzes$ | async" (click)="onSelect(quiz)">
+<section class="list-of-quizzes">
+    <mat-card class="quiz-card" *ngFor="let quiz of quizzes$ | async" (click)="onSelect(quiz)">
       <mat-card-title>{{quiz.name}}</mat-card-title>
-      <div class="quizCardBody"><p>Not started</p>
+      <div class="quiz-card-body">
+      <p>Not started</p>
       <button mat-stroked-button>Start</button>
-    </div>
+      </div>
     </mat-card>
 </section>
 </div>
-<div *ngIf="selectedQuiz">
 
+<section class="question-and-answers" *ngIf="selectedQuiz">
         <h2>{{selectedQuiz.name}}</h2>
         <h3>{{selectedQuiz.questions[currentQuestion].text}}</h3>
         <mat-radio-group class="answer-options-group">
@@ -18,8 +19,10 @@
         <mat-radio-button class="answer-option">{{selectedQuiz.questions[currentQuestion].options.split(',')[2]}}</mat-radio-button>
         <mat-radio-button class="answer-option">{{selectedQuiz.questions[currentQuestion].options.split(',')[3]}}</mat-radio-button>
         </mat-radio-group>
-        <div>
-            <button mat-stroked-button>Back</button>
-            <button mat-stroked-button>Next</button>
+        <div class="questions-navigation-buttons">
+            <button *ngIf="selectedQuiz.questions[currentQuestion-1]" mat-stroked-button (click)="previousQuestion()">Back</button>
+            <button *ngIf="!selectedQuiz.questions[currentQuestion-1]"mat-button disabled>Back</button>
+            <button *ngIf="selectedQuiz.questions[currentQuestion+1]"mat-stroked-button (click)="nextQuestion()">Next</button>
+            <button *ngIf="!selectedQuiz.questions[currentQuestion+1]"mat-stroked-button (click)="returnToDashboard()">Return To Dashboard</button>
         </div>
- </div>
+    </section>
