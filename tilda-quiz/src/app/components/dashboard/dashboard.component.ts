@@ -9,6 +9,8 @@ interface Quiz {
   name: string;
 }
 
+
+
 interface Response {
   quizzes: Quiz[];
 }
@@ -18,9 +20,19 @@ query Quizzes {
   quizzes {
     id
     name
+    questions {
+      answer
+      id
+      options
+      text
+    }
   }
 }
+
+
 `;
+
+
 
 @Component({
   selector: 'app-dashboard',
@@ -41,6 +53,11 @@ export class DashboardComponent implements OnInit {
     this.quizzes$ = this.apollo.watchQuery<Response>({
 query: GET_QUIZZES
     }).valueChanges.pipe(map(result => result.data.quizzes))
+  }
+
+  selectedQuiz?: Quiz;
+  onSelect(quiz: Quiz): void {
+    this.selectedQuiz = quiz;
   }
 }
 

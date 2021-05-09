@@ -1,9 +1,16 @@
-
+<div *ngIf="!selectedQuiz">
 <section class="listOfQuizzes">
-    <mat-card class="quizCard" *ngFor="let quiz of quizzes$ | async">
+    <mat-card class="quizCard" *ngFor="let quiz of quizzes$ | async" (click)="onSelect(quiz)">
       <mat-card-title>{{quiz.name}}</mat-card-title>
       <div class="quizCardBody"><p>Not started</p>
       <button mat-stroked-button>Start</button>
-      </div>
+    </div>
     </mat-card>
-  </section>
+</section>
+</div>
+<div *ngIf="selectedQuiz">
+
+        <h2>{{selectedQuiz.name | uppercase}} Questions</h2>
+        <h3 *ngFor="let question of selectedQuiz.questions">{{question.text}}{{question.options}}</h3>
+        
+ </div>
