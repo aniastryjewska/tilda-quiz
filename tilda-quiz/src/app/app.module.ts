@@ -6,10 +6,15 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { GraphQLModule } from './graphql.module';
 import { HttpClientModule } from '@angular/common/http';
+import { AppRoutingModule } from './app-routing.module';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { QuizQuestionComponent } from './components/quiz-question/quiz-question.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DashboardComponent,
+    QuizQuestionComponent
   ],
   imports: [
     BrowserModule,
@@ -18,6 +23,7 @@ import { HttpClientModule } from '@angular/common/http';
     HttpClientModule,
     MatCardModule,
     MatButtonModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

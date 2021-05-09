@@ -1,0 +1,21 @@
+
+.listOfQuizzes {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.quizCard {
+    width: 250px;
+    border-radius: 0px;
+}
+
+.quizCardBody {
+    display: flex;
+    justify-content:space-around;
+    align-items: center;
+}
+
+button {
+    border-radius: 0px;
+}

@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input} from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Apollo } from 'apollo-angular';
@@ -23,12 +23,15 @@ query Quizzes {
 `;
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-dashboard',
+  templateUrl: './dashboard.component.html',
+  styleUrls: ['./dashboard.component.css']
 })
-export class AppComponent implements OnInit {
-  title = 'Tilda Quizz';
+export class DashboardComponent implements OnInit {
+
+
+  //@Input() quizzes$?;
+
 
   quizzes$: Observable<Quiz[]>;
 
@@ -40,3 +43,4 @@ query: GET_QUIZZES
     }).valueChanges.pipe(map(result => result.data.quizzes))
   }
 }
+
