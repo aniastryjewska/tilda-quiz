@@ -33,8 +33,9 @@ export class DashboardComponent implements OnInit {
 
 
   currentQuestion = 0
-
   answerOptionsArray
+  currentScore = 0
+  selectedQuiz: Quiz;
   
   quizzes$: Observable<Quiz[]>;
 
@@ -46,16 +47,24 @@ query: GET_QUIZZES
     }).valueChanges.pipe(map(result => result.data.quizzes))
   }
 
-  selectedQuiz?: Quiz;
+  
 
   onSelect(quiz: Quiz): void {
     this.selectedQuiz = quiz;
     this.answerOptionsArray = this.selectedQuiz.questions[this.currentQuestion].options.split(',');
   }
 
+  onAnswer(option) {
+    if(option === this.selectedQuiz.questions[this.currentQuestion].answer) {
+      this.currentScore++
+      }
+  }
+
+
   nextQuestion() {
     this.currentQuestion = this.currentQuestion+1;
     this.answerOptionsArray = this.selectedQuiz.questions[this.currentQuestion].options.split(',');
+    
   }
   previousQuestion() {
     this.currentQuestion = this.currentQuestion-1;

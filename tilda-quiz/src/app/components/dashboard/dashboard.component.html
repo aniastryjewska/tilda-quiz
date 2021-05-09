@@ -3,8 +3,10 @@
     <mat-card class="quiz-card" *ngFor="let quiz of quizzes$ | async" (click)="onSelect(quiz)">
       <mat-card-title>{{quiz.name}}</mat-card-title>
       <div class="quiz-card-body">
-      <p>Not started</p>
-      <button mat-stroked-button>Start</button>
+      <p *ngIf="currentScore===0">Not started</p>
+      <p *ngIf="currentScore>0">{{currentScore}}/{{quiz.questions.length}}</p>
+      <button *ngIf="currentScore===0" mat-stroked-button>Start</button>
+      <button *ngIf="currentScore>0" mat-stroked-button>Redo</button>
       </div>
     </mat-card>
 </section>
@@ -15,7 +17,7 @@
         <h3>{{selectedQuiz.questions[currentQuestion].text}}</h3>
 
         <mat-radio-group class="answer-options-group">
-        <mat-radio-button class="answer-option" *ngFor="let option of answerOptionsArray">{{option}}</mat-radio-button>
+        <mat-radio-button class="answer-option" *ngFor="let option of answerOptionsArray" value=[option] (change)=onAnswer(option)>{{option}}</mat-radio-button>
         </mat-radio-group>
 
         <div class="questions-navigation-buttons">
