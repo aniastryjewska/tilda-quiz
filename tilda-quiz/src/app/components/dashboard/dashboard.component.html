@@ -10,7 +10,16 @@
 </div>
 <div *ngIf="selectedQuiz">
 
-        <h2>{{selectedQuiz.name | uppercase}} Questions</h2>
-        <h3 *ngFor="let question of selectedQuiz.questions">{{question.text}}{{question.options}}</h3>
-        
+        <h2>{{selectedQuiz.name}}</h2>
+        <h3>{{selectedQuiz.questions[currentQuestion].text}}</h3>
+        <mat-radio-group class="answer-options-group">
+        <mat-radio-button class="answer-option">{{selectedQuiz.questions[currentQuestion].options.split(',')[0]}}</mat-radio-button>
+        <mat-radio-button class="answer-option">{{selectedQuiz.questions[currentQuestion].options.split(',')[1]}}</mat-radio-button>
+        <mat-radio-button class="answer-option">{{selectedQuiz.questions[currentQuestion].options.split(',')[2]}}</mat-radio-button>
+        <mat-radio-button class="answer-option">{{selectedQuiz.questions[currentQuestion].options.split(',')[3]}}</mat-radio-button>
+        </mat-radio-group>
+        <div>
+            <button mat-stroked-button>Back</button>
+            <button mat-stroked-button>Next</button>
+        </div>
  </div>

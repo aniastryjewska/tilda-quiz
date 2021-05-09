@@ -19,3 +19,14 @@
 button {
     border-radius: 0px;
 }
+
+.answer-options-group {
+    display: inline-flex;
+  flex-direction: column;
+}
+
+.answer-option {
+    margin: 10px;
+    padding: 10px 30px;
+    border: 1px solid grey;
+}

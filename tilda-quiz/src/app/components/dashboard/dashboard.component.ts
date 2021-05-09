@@ -28,8 +28,6 @@ query Quizzes {
     }
   }
 }
-
-
 `;
 
 
@@ -44,7 +42,8 @@ export class DashboardComponent implements OnInit {
 
   //@Input() quizzes$?;
 
-
+  currentQuestion = 1
+  
   quizzes$: Observable<Quiz[]>;
 
   constructor(private apollo:Apollo) {}
@@ -58,6 +57,7 @@ query: GET_QUIZZES
   selectedQuiz?: Quiz;
   onSelect(quiz: Quiz): void {
     this.selectedQuiz = quiz;
+    
   }
 }
 
