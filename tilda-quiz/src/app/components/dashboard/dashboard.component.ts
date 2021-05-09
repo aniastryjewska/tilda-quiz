@@ -34,8 +34,8 @@ export class DashboardComponent implements OnInit {
 
   currentQuestion = 0
   answerOptionsArray
+  selectedQuiz
   currentScore = 0
-  selectedQuiz: Quiz;
   
   quizzes$: Observable<Quiz[]>;
 
@@ -51,6 +51,7 @@ query: GET_QUIZZES
 
   onSelect(quiz: Quiz): void {
     this.selectedQuiz = quiz;
+    this.currentQuestion = 0;
     this.answerOptionsArray = this.selectedQuiz.questions[this.currentQuestion].options.split(',');
   }
 
@@ -72,7 +73,7 @@ query: GET_QUIZZES
   }
 
   returnToDashboard() {
-    !this.selectedQuiz
+    this.selectedQuiz = !this.selectedQuiz
   }
 }
 
