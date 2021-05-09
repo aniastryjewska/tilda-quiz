@@ -56,6 +56,6 @@ button {
 .questions-navigation-buttons {
     display: flex;
     flex-direction: row;
-    justify-content: space-evenly;
+    justify-content:stretch;
     padding-top: 40px;
 }

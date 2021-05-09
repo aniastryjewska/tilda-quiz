@@ -3,15 +3,10 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
+import { Quiz } from './interfaces/quiz';
+import { Response } from './interfaces/API_response';
 
-interface Quiz {
-  id: string;
-  name: string;
-}
 
-interface Response {
-  quizzes: Quiz[];
-}
 
 const GET_QUIZZES = gql`
 query Quizzes {
