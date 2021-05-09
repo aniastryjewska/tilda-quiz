@@ -13,12 +13,11 @@
 <section class="question-and-answers" *ngIf="selectedQuiz">
         <h2>{{selectedQuiz.name}}</h2>
         <h3>{{selectedQuiz.questions[currentQuestion].text}}</h3>
+
         <mat-radio-group class="answer-options-group">
-        <mat-radio-button class="answer-option">{{selectedQuiz.questions[currentQuestion].options.split(',')[0]}}</mat-radio-button>
-        <mat-radio-button class="answer-option">{{selectedQuiz.questions[currentQuestion].options.split(',')[1]}}</mat-radio-button>
-        <mat-radio-button class="answer-option">{{selectedQuiz.questions[currentQuestion].options.split(',')[2]}}</mat-radio-button>
-        <mat-radio-button class="answer-option">{{selectedQuiz.questions[currentQuestion].options.split(',')[3]}}</mat-radio-button>
+        <mat-radio-button class="answer-option" *ngFor="let option of answerOptionsArray">{{option}}</mat-radio-button>
         </mat-radio-group>
+
         <div class="questions-navigation-buttons">
             <button *ngIf="selectedQuiz.questions[currentQuestion-1]" mat-stroked-button (click)="previousQuestion()">Back</button>
             <button *ngIf="!selectedQuiz.questions[currentQuestion-1]"mat-button disabled>Back</button>

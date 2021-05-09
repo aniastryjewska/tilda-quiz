@@ -3,17 +3,9 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { Apollo } from 'apollo-angular';
 import gql from 'graphql-tag';
+import {Quiz} from 'src/app/interfaces/quiz';
+import {Response} from 'src/app/interfaces/API_response'
 
-interface Quiz {
-  id: string;
-  name: string;
-}
-
-
-
-interface Response {
-  quizzes: Quiz[];
-}
 
 const GET_QUIZZES = gql`
 query Quizzes {
@@ -41,6 +33,8 @@ export class DashboardComponent implements OnInit {
 
 
   currentQuestion = 0
+
+  answerOptionsArray
   
   quizzes$: Observable<Quiz[]>;
 
@@ -53,19 +47,19 @@ query: GET_QUIZZES
   }
 
   selectedQuiz?: Quiz;
+
   onSelect(quiz: Quiz): void {
     this.selectedQuiz = quiz;
+    this.answerOptionsArray = this.selectedQuiz.questions[this.currentQuestion].options.split(',');
   }
 
   nextQuestion() {
-    this.currentQuestion = this.currentQuestion+1
+    this.currentQuestion = this.currentQuestion+1;
+    this.answerOptionsArray = this.selectedQuiz.questions[this.currentQuestion].options.split(',');
   }
   previousQuestion() {
-    if(this.currentQuestion-1>=0) {
-    this.currentQuestion = this.currentQuestion-1
-  } else {
-    this.currentQuestion = this.currentQuestion
-  }
+    this.currentQuestion = this.currentQuestion-1;
+    this.answerOptionsArray = this.selectedQuiz.questions[this.currentQuestion].options.split(',');
   }
 
   returnToDashboard() {

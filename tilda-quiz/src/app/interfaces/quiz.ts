@@ -1,12 +1,12 @@
 export interface Quiz {
     id: string;
     name: string;
-    questions: {
+    questions: [{
       answer: string;
       id: string;
       options: string;
       text: string;
-    }
+    }]
   }
 
  
