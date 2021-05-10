@@ -1,7 +1,7 @@
 <h1>Disclaimer</h1>
 
 What I wanted to do is to have two components: the dashboard displaying all available quizzes, and the quiz-question component displaying each individual question and answer options. For this, I tried to implement an injectable service to fetch data from the database and 
-make it available in each of the components, but unfotunately I haven't managed to make it work in time, so I had to settle for this current setup, where I only fetch data and display everything in a single component, although I do realize that this is bad practice.
+make it available in each of the components, but unfortunately I haven't managed to make it work in time, so I had to settle for this current setup, where I only fetch data and display everything in a single component. I do realize that this is bad practice.
 
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.12.
