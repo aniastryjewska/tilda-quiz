@@ -32,9 +32,9 @@ query Quizzes {
 export class DashboardComponent implements OnInit {
 
 
-  currentQuestion = 0
-  answerOptionsArray
-  selectedQuiz
+  currentQuestion = 0 //index of the question the user is currently on
+  answerOptionsArray //I'm declaring this variable to convert answer options from a string to an array to be able to loop through it using Angular repeater directive *ngFor
+  selectedQuiz //currently selected quiz
   currentScore = 0
   
   quizzes$: Observable<Quiz[]>;
@@ -42,12 +42,12 @@ export class DashboardComponent implements OnInit {
   constructor(private apollo:Apollo) {}
 
   ngOnInit(): void {
+
+    //fetching the data from graphQL API using Apollo Client
     this.quizzes$ = this.apollo.watchQuery<Response>({
 query: GET_QUIZZES
     }).valueChanges.pipe(map(result => result.data.quizzes))
   }
-
-  
 
   onSelect(quiz: Quiz): void {
     this.selectedQuiz = quiz;
