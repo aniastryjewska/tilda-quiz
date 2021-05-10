@@ -1,14 +1,14 @@
-# TildaQuiz
+<h1>Disclaimer</h1>
+
+What I wanted to do is to have two components: the dashboard displaying all available quizzes, and the quiz-question component displaying each individual question and answer options. For this, I tried to implement an injectable service to fetch data from the database and 
+make it available in each of the components, but unfotunately I haven't managed to make it work in time, so I had to settle for this current setup, where I only fetch data and display everything in a single component, although I do realize that this is bad practice.
+
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.2.12.
 
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
-
-## Code scaffolding
-
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
 
 ## Build
 
